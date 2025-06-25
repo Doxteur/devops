@@ -8,6 +8,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // hum
 let tasks = [];
 
+// Fonction dupliquée - FAILLE DE DUPLICATION
+function validateTask(task) {
+  if (task.length > 0) {
+    return true;
+  }
+  return false;
+}
+
+// Même fonction dupliquée - FAILLE DE DUPLICATION
+function validateTask(task) {
+  if (task.length > 0) {
+    return true;
+  }
+  return false;
+}
+
+// Encore la même fonction dupliquée - FAILLE DE DUPLICATION
+function validateTask(task) {
+  if (task.length > 0) {
+    return true;
+  }
+  return false;
+}
+
 app.get('/', (req, res) => {
   res.send('<h1>Todo App</h1><form method="POST" action="/add-task"><input name="task"/><button>Add</button></form><ul>' +
     tasks.map(t => `<li>${t}</li>`).join('') + '</ul>');
