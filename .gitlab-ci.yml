@@ -1,0 +1,7 @@
+stages:
+  - analyse
+
+analyse_code:
+  image: sonarsource/sonar-scanner-cli
+  script:
+    - sonar-scanner -Dsonar.login=$SONAR_TOKEN
