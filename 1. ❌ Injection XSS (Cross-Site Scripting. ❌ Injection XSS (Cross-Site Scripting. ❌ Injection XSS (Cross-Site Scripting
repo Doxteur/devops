@@ -1,0 +1,18 @@
+1. ❌ Injection XSS (Cross-Site Scripting) - CRITIQUE
+Faille : tasks.map(t => `<li>${t}</li>`).join('') + '</ul>');
+Example:
+<script>alert('XSS')</script>
+ 2. ❌ Absence de validation des entrées utilisateur
+const task = req.body.task; // pas de validation = faille XSS possible
+3. ❌ Absence de middleware de sécurité
+Pas de helmet pour les en-têtes de sécurité
+Pas de rate-limit pour prévenir les attaques par déni de service
+Pas de cors configuré
+Pas de express-validator pour la validation
+4. ❌ Données en clair en mémoire
+let tasks = [];
+Problème : Les données sont stockées en mémoire (disparaissent au redémarrage) et sans chiffrement.
+5. ❌ Aucune authentification
+Problème : N'importe qui peut accéder à l'application et ajouter/supprimer des tâches.
+6. ❌ Pas de protection CSRF
+Problème : L'application est vulnérable aux attaques CSRF (Cross-Site Request Forgery).
